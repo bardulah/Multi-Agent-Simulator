@@ -1,0 +1,469 @@
+{
+  "summary": {
+    "total_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "pass_rate": "100.0%",
+    "total_issues": 1,
+    "simulation_mode": true
+  },
+  "test_results": [
+    {
+      "test_name": "Tech Specialist - iPhone 13 Pro",
+      "input": {
+        "item_category": "smartphones",
+        "brand_model": "Apple iPhone 13 Pro 256GB Sierra Blue",
+        "condition_raw": "excellent",
+        "defects": [
+          "small screen scratch"
+        ],
+        "photos_type": "actual",
+        "price_asking": 549,
+        "target_platform": "eBay.de",
+        "target_language": "de",
+        "market_price_reference": 1149,
+        "battery_health": 87,
+        "included_items": [
+          "USB-C cable",
+          "case"
+        ]
+      },
+      "expected": {
+        "module": "iteration_12_tech",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 Apple\u2605\u2605\u2605\u2605 \u20ac549",
+          "char_count": 26,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Apple\ud83d\udcf8\u2605\u2605\u2605\u2605 \u20ac549",
+          "char_count": 25,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 Apple\u2605\u2605\u2605\u2605 \u20ac549",
+          "char_count": 24,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_12_tech_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_eBay.de",
+            "iteration_6_multilingual_de"
+          ],
+          "character_budget": 160,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:24.084439"
+    },
+    {
+      "test_name": "Luxury Specialist - Herm\u00e8s Birkin",
+      "input": {
+        "item_category": "luxury_handbags",
+        "brand_model": "Herm\u00e8s Birkin 30 Togo Leather",
+        "condition_raw": "excellent",
+        "defects": [
+          "minor corner wear"
+        ],
+        "photos_type": "actual",
+        "price_asking": 12000,
+        "target_platform": "eBay.de",
+        "target_language": "en",
+        "market_price_reference": 16000
+      },
+      "expected": {
+        "module": "iteration_11_luxury",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 Herm\u00e8s\u2605\u2605\u2605\u2605 \u20ac12000",
+          "char_count": 29,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Herm\u00e8s\ud83d\udcf8\u2605\u2605\u2605\u2605 \u20ac12000",
+          "char_count": 28,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 Herm\u00e8s\u2605\u2605\u2605\u2605 \u20ac12000",
+          "char_count": 27,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_11_luxury_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_eBay.de",
+            "iteration_6_multilingual_en"
+          ],
+          "character_budget": 165,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:24.286098"
+    },
+    {
+      "test_name": "HIGH RISK - Potential Counterfeit",
+      "input": {
+        "item_category": "luxury_handbags",
+        "brand_model": "Louis Vuitton Neverfull MM",
+        "condition_raw": "excellent",
+        "defects": [],
+        "photos_type": "stock",
+        "price_asking": 400,
+        "target_platform": "Vinted",
+        "target_language": "en",
+        "market_price_reference": 1200
+      },
+      "expected": {
+        "module": "iteration_11_luxury",
+        "risk_level": "HIGH"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\uddbc\ufe0f Louis\u2605\u2605\u2605\u2605 \u20ac400",
+          "char_count": 27,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Louis\ud83d\uddbc\ufe0f\u2605\u2605\u2605\u2605 \u20ac400",
+          "char_count": 26,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\uddbc\ufe0f Louis\u2605\u2605\u2605\u2605 \u20ac400",
+          "char_count": 25,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 65,
+          "risk_level": "HIGH",
+          "modules_applied": [
+            "iteration_11_luxury_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_Vinted",
+            "iteration_6_multilingual_en"
+          ],
+          "character_budget": 180,
+          "safety_warnings": [
+            "\u26a0\ufe0f Stock photos only - authentication recommended"
+          ]
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:24.486505"
+    },
+    {
+      "test_name": "CRITICAL RISK - Battery Swelling",
+      "input": {
+        "item_category": "laptops",
+        "brand_model": "Apple MacBook Pro 2017",
+        "condition_raw": "fair",
+        "defects": [
+          "battery swelling detected"
+        ],
+        "photos_type": "actual",
+        "price_asking": 400,
+        "target_platform": "Kleinanzeigen",
+        "target_language": "de"
+      },
+      "expected": {
+        "module": "iteration_12_tech",
+        "risk_level": "CRITICAL"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 Apple\u2605\u2605\u2605 \u20ac400",
+          "char_count": 25,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Apple\ud83d\udcf8\u2605\u2605\u2605 \u20ac400",
+          "char_count": 24,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 Apple\u2605\u2605\u2605 \u20ac400",
+          "char_count": 23,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 50,
+          "risk_level": "MEDIUM",
+          "modules_applied": [
+            "iteration_12_tech_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_Kleinanzeigen",
+            "iteration_6_multilingual_de"
+          ],
+          "character_budget": 125,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": [
+          "Risk level mismatch: expected 'CRITICAL', got 'MEDIUM'"
+        ]
+      },
+      "timestamp": "2025-11-17T08:00:24.687853"
+    },
+    {
+      "test_name": "Clothing Specialist - Zara Dress",
+      "input": {
+        "item_category": "womens_clothing",
+        "brand_model": "Zara Midi Dress Floral",
+        "condition_raw": "like new",
+        "defects": [],
+        "photos_type": "actual",
+        "price_asking": 25,
+        "target_platform": "Vinted",
+        "target_language": "de"
+      },
+      "expected": {
+        "module": "iteration_13_clothing",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 Zara\u2605\u2605\u2605 \u20ac25",
+          "char_count": 23,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Zara\ud83d\udcf8\u2605\u2605\u2605 \u20ac25",
+          "char_count": 22,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 Zara\u2605\u2605\u2605 \u20ac25",
+          "char_count": 21,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_13_clothing_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_Vinted",
+            "iteration_6_multilingual_de"
+          ],
+          "character_budget": 125,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:24.889246"
+    },
+    {
+      "test_name": "Furniture Specialist - IKEA BILLY",
+      "input": {
+        "item_category": "furniture",
+        "brand_model": "IKEA BILLY Bookshelf White",
+        "condition_raw": "good",
+        "defects": [
+          "small scratch"
+        ],
+        "photos_type": "actual",
+        "price_asking": 25,
+        "target_platform": "Kleinanzeigen",
+        "target_language": "de"
+      },
+      "expected": {
+        "module": "iteration_14_furniture",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 IKEA\u2605\u2605\u2605 \u20ac25",
+          "char_count": 23,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! IKEA\ud83d\udcf8\u2605\u2605\u2605 \u20ac25",
+          "char_count": 22,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 IKEA\u2605\u2605\u2605 \u20ac25",
+          "char_count": 21,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_14_furniture_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_Kleinanzeigen",
+            "iteration_6_multilingual_de"
+          ],
+          "character_budget": 125,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:25.089666"
+    },
+    {
+      "test_name": "Bundle Handling - Gaming Setup",
+      "input": {
+        "item_category": "gaming_consoles",
+        "brand_model": "PlayStation 5 Disc Edition",
+        "condition_raw": "excellent",
+        "defects": [],
+        "photos_type": "actual",
+        "price_asking": 650,
+        "target_platform": "eBay.de",
+        "target_language": "de",
+        "included_items": [
+          "controller 1",
+          "controller 2",
+          "Spider-Man",
+          "COD",
+          "FIFA",
+          "headset"
+        ]
+      },
+      "expected": {
+        "module": "iteration_12_tech",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 PlayStation\u2605\u2605\u2605\u2605 \u20ac650",
+          "char_count": 32,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! PlayStation\ud83d\udcf8\u2605\u2605\u2605\u2605 \u20ac650",
+          "char_count": 31,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 PlayStation\u2605\u2605\u2605\u2605 \u20ac650",
+          "char_count": 30,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_12_tech_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_eBay.de",
+            "iteration_6_multilingual_de",
+            "iteration_7_bundle_handler"
+          ],
+          "character_budget": 160,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:25.290409"
+    },
+    {
+      "test_name": "Multilingual - French Platform",
+      "input": {
+        "item_category": "mens_clothing",
+        "brand_model": "Nike Air Max 90",
+        "condition_raw": "good",
+        "defects": [
+          "minor sole wear"
+        ],
+        "photos_type": "actual",
+        "price_asking": 60,
+        "target_platform": "Vinted.fr",
+        "target_language": "fr",
+        "market_price_reference": 140
+      },
+      "expected": {
+        "module": "iteration_13_clothing",
+        "risk_level": "LOW"
+      },
+      "actual": {
+        "variant_a_emotion": {
+          "text": "Great find\ud83d\udcf8 Nike\u2605\u2605\u2605 \u20ac60",
+          "char_count": 23,
+          "optimization_focus": "Emotional appeal"
+        },
+        "variant_b_value": {
+          "text": "Save big! Nike\ud83d\udcf8\u2605\u2605\u2605 \u20ac60",
+          "char_count": 22,
+          "optimization_focus": "Price value"
+        },
+        "variant_c_trust": {
+          "text": "Verified\ud83d\udcf8 Nike\u2605\u2605\u2605 \u20ac60",
+          "char_count": 21,
+          "optimization_focus": "Trust signals"
+        },
+        "metadata": {
+          "risk_score": 0,
+          "risk_level": "LOW",
+          "modules_applied": [
+            "iteration_13_clothing_specialist",
+            "iteration_15_price_optimization",
+            "iteration_8_platform_Vinted.fr",
+            "iteration_6_multilingual_fr"
+          ],
+          "character_budget": 114,
+          "safety_warnings": []
+        },
+        "execution_time_ms": 0,
+        "simulated": true
+      },
+      "validation": {
+        "passed": true,
+        "issues": []
+      },
+      "timestamp": "2025-11-17T08:00:25.491757"
+    }
+  ],
+  "generated_at": "2025-11-17T08:00:25.692019"
+}

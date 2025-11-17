@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Description Generator - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 80px;
+            font-family: inherit;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f5f5f5;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item:hover {
+            background: #e0e0e0;
+        }
+
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .variant {
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .variant h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .variant-text {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .variant-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .metadata {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .metadata h3 {
+            color: #f57c00;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .metadata-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .metadata-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .risk-low { color: #4caf50; font-weight: 600; }
+        .risk-medium { color: #ff9800; font-weight: 600; }
+        .risk-high { color: #ff5722; font-weight: 600; }
+        .risk-critical { color: #d32f2f; font-weight: 600; }
+
+        .warning {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #c62828;
+        }
+
+        .copy-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background: #45a049;
+        }
+
+        .example-btn {
+            background: #e0e0e0;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .example-btn:hover {
+            background: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                🚀 Marketplace Description Generator
+                <span class="badge">v1.0</span>
+            </h1>
+            <p>
+                Generate AI-powered descriptions for European secondhand marketplaces using the
+                <strong>Prompt Mutation Framework</strong> (16-iteration infinite prompting method)
+            </p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>📝 Item Details</h2>
+
+                <button class="example-btn" onclick="loadExample()">Load Example (iPhone)</button>
+
+                <form id="generatorForm">
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" required>
+                            <option value="">Select category...</option>
+                            <option value="smartphones">Smartphones</option>
+                            <option value="laptops">Laptops</option>
+                            <option value="tablets">Tablets</option>
+                            <option value="gaming_consoles">Gaming Consoles</option>
+                            <option value="luxury_handbags">Luxury Handbags</option>
+                            <option value="luxury_watches">Luxury Watches</option>
+                            <option value="mens_clothing">Men's Clothing</option>
+                            <option value="womens_clothing">Women's Clothing</option>
+                            <option value="shoes">Shoes</option>
+                            <option value="furniture">Furniture</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="brand_model">Brand & Model *</label>
+                        <input type="text" id="brand_model" placeholder="Apple iPhone 13 Pro 256GB Sierra Blue" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Condition *</label>
+                        <select id="condition" required>
+                            <option value="mint">Mint (like new)</option>
+                            <option value="excellent">Excellent</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="defects">Defects (optional, comma-separated)</label>
+                        <input type="text" id="defects" placeholder="small screen scratch, minor wear on corners">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="photos">Photo Type *</label>
+                        <select id="photos" required>
+                            <option value="actual">Actual item photos</option>
+                            <option value="stock">Stock/catalog photos</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Asking Price (EUR) *</label>
+                        <input type="number" id="price" min="1" step="0.01" placeholder="549" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="market_price">Original/Market Price (EUR, optional)</label>
+                        <input type="number" id="market_price" min="1" step="0.01" placeholder="1149">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="platform">Platform *</label>
+                        <select id="platform" required>
+                            <option value="eBay.de">eBay Deutschland</option>
+                            <option value="Vinted">Vinted</option>
+                            <option value="Kleinanzeigen">eBay Kleinanzeigen</option>
+                            <option value="eBay.com">eBay International</option>
+                            <option value="Mercari_EU">Mercari Europe</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="language">Language *</label>
+                        <select id="language" required>
+                            <option value="de">German (Deutsch)</option>
+                            <option value="en">English</option>
+                            <option value="fr">French (Français)</option>
+                            <option value="es">Spanish (Español)</option>
+                            <option value="it">Italian (Italiano)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="battery">Battery Health % (for devices, optional)</label>
+                        <input type="number" id="battery" min="0" max="100" placeholder="87">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="included">Included Items (optional, comma-separated)</label>
+                        <input type="text" id="included" placeholder="USB-C cable, case, original box">
+                    </div>
+
+                    <button type="submit" id="submitBtn">✨ Generate Descriptions</button>
+                </form>
+            </div>
+
+            <!-- Results -->
+            <div class="card">
+                <h2>💡 Generated Descriptions</h2>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 20px; color: #666;">Generating optimized descriptions...</p>
+                </div>
+
+                <div class="results" id="results">
+                    <div id="variantA"></div>
+                    <div id="variantB"></div>
+                    <div id="variantC"></div>
+                    <div id="metadata"></div>
+                </div>
+
+                <div id="placeholder" style="text-align: center; padding: 60px 20px; color: #999;">
+                    <p>Fill out the form and click "Generate Descriptions" to see AI-powered results</p>
+                    <p style="font-size: 48px; margin: 20px 0;">📦</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000';
+
+        // Load example data
+        function loadExample() {
+            document.getElementById('category').value = 'smartphones';
+            document.getElementById('brand_model').value = 'Apple iPhone 13 Pro 256GB Sierra Blue';
+            document.getElementById('condition').value = 'excellent';
+            document.getElementById('defects').value = 'small screen scratch';
+            document.getElementById('photos').value = 'actual';
+            document.getElementById('price').value = '549';
+            document.getElementById('market_price').value = '1149';
+            document.getElementById('platform').value = 'eBay.de';
+            document.getElementById('language').value = 'de';
+            document.getElementById('battery').value = '87';
+            document.getElementById('included').value = 'USB-C cable, case';
+        }
+
+        // Form submission
+        document.getElementById('generatorForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('placeholder').style.display = 'none';
+            document.getElementById('submitBtn').disabled = true;
+
+            // Gather form data
+            const formData = {
+                item_category: document.getElementById('category').value,
+                brand_model: document.getElementById('brand_model').value,
+                condition_raw: document.getElementById('condition').value,
+                defects: document.getElementById('defects').value.split(',').map(s => s.trim()).filter(s => s),
+                photos_type: document.getElementById('photos').value,
+                price_asking: parseFloat(document.getElementById('price').value),
+                target_platform: document.getElementById('platform').value,
+                target_language: document.getElementById('language').value,
+                included_items: document.getElementById('included').value.split(',').map(s => s.trim()).filter(s => s)
+            };
+
+            // Add optional fields
+            if (document.getElementById('market_price').value) {
+                formData.market_price_reference = parseFloat(document.getElementById('market_price').value);
+            }
+            if (document.getElementById('battery').value) {
+                formData.battery_health = parseInt(document.getElementById('battery').value);
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                displayResults(result);
+
+            } catch (error) {
+                alert(`Error: ${error.message}\n\nMake sure the API is running at ${API_URL}`);
+                console.error(error);
+            } finally {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('submitBtn').disabled = false;
+            }
+        });
+
+        function displayResults(result) {
+            // Variant A
+            document.getElementById('variantA').innerHTML = `
+                <div class="variant">
+                    <h3>Variant A: Emotion-Optimized</h3>
+                    <div class="variant-text">${escapeHtml(result.variant_a_emotion.text)}</div>
+                    <div class="variant-meta">
+                        <span>Focus: ${result.variant_a_emotion.optimization_focus}</span>
+                        <span>${result.variant_a_emotion.char_count} characters</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('${escapeHtml(result.variant_a_emotion.text)}')">Copy</button>
+                </div>
+            `;
+
+            // Variant B
+            document.getElementById('variantB').innerHTML = `
+                <div class="variant">
+                    <h3>Variant B: Value-Optimized</h3>
+                    <div class="variant-text">${escapeHtml(result.variant_b_value.text)}</div>
+                    <div class="variant-meta">
+                        <span>Focus: ${result.variant_b_value.optimization_focus}</span>
+                        <span>${result.variant_b_value.char_count} characters</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('${escapeHtml(result.variant_b_value.text)}')">Copy</button>
+                </div>
+            `;
+
+            // Variant C
+            document.getElementById('variantC').innerHTML = `
+                <div class="variant">
+                    <h3>Variant C: Trust-Optimized</h3>
+                    <div class="variant-text">${escapeHtml(result.variant_c_trust.text)}</div>
+                    <div class="variant-meta">
+                        <span>Focus: ${result.variant_c_trust.optimization_focus}</span>
+                        <span>${result.variant_c_trust.char_count} characters</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('${escapeHtml(result.variant_c_trust.text)}')">Copy</button>
+                </div>
+            `;
+
+            // Metadata
+            const riskClass = result.metadata.risk_level.toLowerCase();
+            const warnings = result.metadata.safety_warnings || [];
+
+            let metadataHTML = `
+                <div class="metadata">
+                    <h3>📊 Metadata & Analysis</h3>
+                    <div class="metadata-grid">
+                        <div class="metadata-item">
+                            <span>Risk Score:</span>
+                            <span class="risk-${riskClass}">${result.metadata.risk_score}/100 (${result.metadata.risk_level})</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span>Character Budget:</span>
+                            <span>${result.metadata.character_budget} chars</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span>Modules Applied:</span>
+                            <span>${result.metadata.modules_applied.length}</span>
+                        </div>
+                        <div class="metadata-item">
+                            <span>Mode:</span>
+                            <span>${result.simulation_mode ? '🔧 Simulation' : '🤖 Production API'}</span>
+                        </div>
+                    </div>
+            `;
+
+            if (warnings.length > 0) {
+                metadataHTML += `
+                    <div class="warning">
+                        <strong>⚠️ Safety Warnings:</strong><br>
+                        ${warnings.map(w => `• ${w}`).join('<br>')}
+                    </div>
+                `;
+            }
+
+            metadataHTML += `</div>`;
+            document.getElementById('metadata').innerHTML = metadataHTML;
+
+            // Show results
+            document.getElementById('results').classList.add('active');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
