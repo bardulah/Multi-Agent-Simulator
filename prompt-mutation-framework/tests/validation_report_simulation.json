@@ -67,7 +67,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:24.084439"
+      "timestamp": "2025-11-17T17:28:21.567044"
     },
     {
       "test_name": "Luxury Specialist - Herm\u00e8s Birkin",
@@ -123,7 +123,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:24.286098"
+      "timestamp": "2025-11-17T17:28:21.767789"
     },
     {
       "test_name": "HIGH RISK - Potential Counterfeit",
@@ -179,7 +179,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:24.486505"
+      "timestamp": "2025-11-17T17:28:21.968565"
     },
     {
       "test_name": "CRITICAL RISK - Battery Swelling",
@@ -236,7 +236,7 @@
           "Risk level mismatch: expected 'CRITICAL', got 'MEDIUM'"
         ]
       },
-      "timestamp": "2025-11-17T08:00:24.687853"
+      "timestamp": "2025-11-17T17:28:22.169863"
     },
     {
       "test_name": "Clothing Specialist - Zara Dress",
@@ -289,7 +289,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:24.889246"
+      "timestamp": "2025-11-17T17:28:22.371182"
     },
     {
       "test_name": "Furniture Specialist - IKEA BILLY",
@@ -344,7 +344,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:25.089666"
+      "timestamp": "2025-11-17T17:28:22.571669"
     },
     {
       "test_name": "Bundle Handling - Gaming Setup",
@@ -406,7 +406,7 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:25.290409"
+      "timestamp": "2025-11-17T17:28:22.772500"
     },
     {
       "test_name": "Multilingual - French Platform",
@@ -462,8 +462,8 @@
         "passed": true,
         "issues": []
       },
-      "timestamp": "2025-11-17T08:00:25.491757"
+      "timestamp": "2025-11-17T17:28:22.974430"
     }
   ],
-  "generated_at": "2025-11-17T08:00:25.692019"
+  "generated_at": "2025-11-17T17:28:23.175282"
 }

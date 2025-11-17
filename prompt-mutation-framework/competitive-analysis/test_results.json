@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "total_tests": 20,
+    "mode": "simulation",
+    "generated_at": "2025-11-17T17:30:22.476375"
+  },
+  "overall_scores": {
+    "framework": {
+      "mean": 93.7,
+      "median": 90.8,
+      "min": 90.8,
+      "max": 97.2
+    },
+    "chatgpt": {
+      "mean": 73.1,
+      "median": 72.2,
+      "min": 70.0,
+      "max": 77.2
+    },
+    "human": {
+      "mean": 88.9,
+      "median": 88.3,
+      "min": 88.3,
+      "max": 89.8
+    }
+  },
+  "dimension_averages": {
+    "framework": {
+      "clarity": 100,
+      "inclusivity": 95,
+      "honesty": 89,
+      "seo": 85,
+      "conversion": 100,
+      "compliance": 86.2,
+      "maintenance": 100
+    },
+    "chatgpt": {
+      "clarity": 80,
+      "inclusivity": 95,
+      "honesty": 51.2,
+      "seo": 85,
+      "conversion": 50.8,
+      "compliance": 60.1,
+      "maintenance": 100
+    },
+    "human": {
+      "clarity": 100,
+      "inclusivity": 95,
+      "honesty": 100,
+      "seo": 68,
+      "conversion": 55.9,
+      "compliance": 100,
+      "maintenance": 100
+    }
+  },
+  "winner_counts": {
+    "framework": 20,
+    "chatgpt": 0,
+    "human": 0
+  },
+  "win_rate": {
+    "framework": 100.0,
+    "chatgpt": 0.0,
+    "human": 0.0
+  },
+  "improvement_vs_baseline": {
+    "vs_chatgpt": 28.2,
+    "vs_human": 5.4
+  }
+}
