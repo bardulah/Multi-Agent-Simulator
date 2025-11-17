@@ -1,0 +1,368 @@
+/* Popup Styles for Marketplace Description Generator */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 420px;
+    min-height: 500px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.container {
+    padding: 0;
+    background: white;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+header .subtitle {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Sections */
+section {
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+section h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 13px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+input[readonly] {
+    background: #f5f5f5;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* Buttons */
+button {
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-primary {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.btn-copy,
+.btn-insert {
+    background: #f5f5f5;
+    color: #555;
+    padding: 6px 12px;
+    font-size: 12px;
+    border: 1px solid #ddd;
+}
+
+.btn-copy:hover,
+.btn-insert:hover {
+    background: #e5e5e5;
+    border-color: #ccc;
+}
+
+/* Status Messages */
+.status {
+    font-size: 11px;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+.status.success {
+    color: #10b981;
+}
+
+.status.error {
+    color: #ef4444;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 12px;
+}
+
+#status-message {
+    font-weight: 500;
+}
+
+.status-info #status-message {
+    color: #667eea;
+}
+
+.status-success #status-message {
+    color: #10b981;
+}
+
+.status-error #status-message {
+    color: #ef4444;
+}
+
+#generation-time {
+    color: #999;
+    font-size: 11px;
+}
+
+/* Results Section */
+.results {
+    background: #fafafa;
+}
+
+.results.hidden {
+    display: none;
+}
+
+.variant {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.variant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.char-count {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+    background: #f9f9f9;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.variant-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.variant-actions button {
+    flex: 1;
+}
+
+/* Metadata */
+.metadata {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.metadata-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.metadata-item {
+    font-size: 12px;
+}
+
+.metadata-item .label {
+    font-weight: 600;
+    color: #666;
+}
+
+.metadata-item span:last-child {
+    color: #333;
+}
+
+/* Risk Levels */
+.risk-low {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.risk-medium {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.risk-high {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.risk-critical {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+/* Warnings */
+.warnings {
+    margin-top: 12px;
+}
+
+.warning {
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #92400e;
+    margin-bottom: 6px;
+    border-radius: 4px;
+}
+
+/* Footer */
+footer {
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    background: #f9f9f9;
+}
+
+footer p {
+    margin-bottom: 4px;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Configuration Section */
+.config .form-group:first-child {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    align-items: end;
+}
+
+.config .form-group:first-child label {
+    grid-column: 1 / -1;
+}

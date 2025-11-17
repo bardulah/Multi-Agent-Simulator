@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Description Generator</title>
+    <link rel="stylesheet" href="popup-styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📝 Description Generator</h1>
+            <p class="subtitle">AI-powered marketplace descriptions</p>
+        </header>
+
+        <!-- Configuration Section -->
+        <section class="config">
+            <h2>Settings</h2>
+
+            <div class="form-group">
+                <label for="api-key">API Key</label>
+                <input
+                    type="password"
+                    id="api-key"
+                    placeholder="sk-ant-xxx"
+                    autocomplete="off"
+                />
+                <button id="save-api-key" class="btn-secondary">Save</button>
+                <span id="api-key-status" class="status"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="platform">Detected Platform</label>
+                <input
+                    type="text"
+                    id="platform"
+                    readonly
+                    value="Not on marketplace page"
+                />
+            </div>
+        </section>
+
+        <!-- Quick Generate Section -->
+        <section class="quick-generate">
+            <h2>Quick Generate</h2>
+
+            <div class="form-group">
+                <label for="item-title">Item Title</label>
+                <input
+                    type="text"
+                    id="item-title"
+                    placeholder="e.g., Apple iPhone 13 Pro 256GB"
+                />
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="condition">Condition</label>
+                    <select id="condition">
+                        <option value="excellent">Excellent</option>
+                        <option value="good">Good</option>
+                        <option value="fair">Fair</option>
+                        <option value="poor">Poor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (€)</label>
+                    <input
+                        type="number"
+                        id="price"
+                        placeholder="549"
+                        min="0"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="defects">Defects (optional, comma-separated)</label>
+                <input
+                    type="text"
+                    id="defects"
+                    placeholder="e.g., small screen scratch, minor wear"
+                />
+            </div>
+
+            <button id="generate-btn" class="btn-primary">
+                Generate Descriptions ✨
+            </button>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results hidden" id="results-section">
+            <h2>Generated Descriptions</h2>
+
+            <!-- Variant A: Emotion -->
+            <div class="variant">
+                <div class="variant-header">
+                    <h3>💚 Variant A - Emotional</h3>
+                    <span class="char-count" id="char-count-a"></span>
+                </div>
+                <textarea
+                    id="variant-a"
+                    readonly
+                    rows="3"
+                ></textarea>
+                <div class="variant-actions">
+                    <button class="btn-copy" data-target="variant-a">📋 Copy</button>
+                    <button class="btn-insert" data-target="variant-a">📝 Insert to Page</button>
+                </div>
+            </div>
+
+            <!-- Variant B: Value -->
+            <div class="variant">
+                <div class="variant-header">
+                    <h3>💰 Variant B - Value</h3>
+                    <span class="char-count" id="char-count-b"></span>
+                </div>
+                <textarea
+                    id="variant-b"
+                    readonly
+                    rows="3"
+                ></textarea>
+                <div class="variant-actions">
+                    <button class="btn-copy" data-target="variant-b">📋 Copy</button>
+                    <button class="btn-insert" data-target="variant-b">📝 Insert to Page</button>
+                </div>
+            </div>
+
+            <!-- Variant C: Trust -->
+            <div class="variant">
+                <div class="variant-header">
+                    <h3>🛡️ Variant C - Trust</h3>
+                    <span class="char-count" id="char-count-c"></span>
+                </div>
+                <textarea
+                    id="variant-c"
+                    readonly
+                    rows="3"
+                ></textarea>
+                <div class="variant-actions">
+                    <button class="btn-copy" data-target="variant-c">📋 Copy</button>
+                    <button class="btn-insert" data-target="variant-c">📝 Insert to Page</button>
+                </div>
+            </div>
+
+            <!-- Metadata -->
+            <div class="metadata">
+                <h4>Metadata</h4>
+                <div class="metadata-grid">
+                    <div class="metadata-item">
+                        <span class="label">Risk Score:</span>
+                        <span id="risk-score">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Modules:</span>
+                        <span id="modules">-</span>
+                    </div>
+                    <div class="metadata-item">
+                        <span class="label">Budget:</span>
+                        <span id="char-budget">-</span>
+                    </div>
+                </div>
+                <div id="warnings" class="warnings"></div>
+            </div>
+        </section>
+
+        <!-- Status Section -->
+        <section class="status-bar">
+            <span id="status-message">Ready</span>
+            <span id="generation-time"></span>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Powered by <strong>Prompt Mutation Framework</strong> v1.0</p>
+            <a href="https://github.com/your-repo/prompt-mutation-framework" target="_blank">
+                Documentation
+            </a>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
